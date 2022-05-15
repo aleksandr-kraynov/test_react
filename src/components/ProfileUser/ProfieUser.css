@@ -1,0 +1,51 @@
+input, label, textarea {
+    display: block;
+}
+
+textarea {
+    width: 95%;
+}
+
+input {
+    width: 50%;
+}
+
+label {
+    font-size: 12px;   
+    margin-bottom: 5px; 
+}
+
+input, textarea {
+    color: #D8D8D8;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #D8D8D8;
+    border-radius: 5px;
+}
+
+.right-block__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.right-block__top-btn {
+    padding: 6px 11px;
+}
+
+.profile-user__area {
+    border: 1px solid #D8D8D8;
+    border-radius: 8px;
+    padding: 20px 12px;
+}
+
+.right-block__send {
+    display: flex;
+    justify-content: end;
+    margin-top: 15px;
+}
+
+.btn__send {
+    background: #AFAFAF;
+    color: #FFFFFF;
+}
