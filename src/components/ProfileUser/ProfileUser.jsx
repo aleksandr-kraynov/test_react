@@ -1,4 +1,4 @@
-import './ProfieUser.css'
+import './ProfileUser.css'
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -32,10 +32,8 @@ const ProfileUser = () => {
         return (
             <div className='right-block'>
                 <div className='right-block__top'>
-                    <p className='listTitle'>Профиль пользователя</p>                     
-                    <NavLink key={item.id} to={`/profile/${item.id}/edit`}>
-                        <button className='btn btn-blue right-block__top-btn'>Редактировать</button> 
-                    </NavLink>  
+                    <p className='listTitle'>Профиль пользователя</p>             
+                    <button className='btn btn-blue right-block__top-btn'>Редактировать</button>                     
                 </div>                          
                 <div className='profile-user__area'>                
                     <label>Name:</label>

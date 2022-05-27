@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 const UsersList = () => {   
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState([]);  
 
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
@@ -22,6 +22,11 @@ const UsersList = () => {
       )
   }, [])
 
+  const sort = () => {
+    let sortArr = [...items]
+    setItems(sortArr.sort((a, b) => a.address.city > b.address.city ? 1 : -1));     
+  }
+
   if (error) {
     return <div>Ошибка: {error.message}</div>;
   } else if (!isLoaded) {
@@ -29,7 +34,7 @@ const UsersList = () => {
   } else {
     return (     
       <div className='right-block'>
-          <p className='listTitle'>Список пользователей</p>
+          <p className='listTitle'>Список пользователей</p>         
           {items.map(item => (
           <div className='card' key={item.id}>
               <div className='card__info'>
