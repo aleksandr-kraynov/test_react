@@ -1,41 +1,18 @@
 import './UsersList.css';
-import React, { useState, useEffect } from 'react';
+
 import { NavLink } from 'react-router-dom';
 
-const UsersList = () => {   
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [items, setItems] = useState([]);  
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then(res => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setItems(result);
-        },         
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-  }, [])
-
-  const sort = () => {
-    let sortArr = [...items]
-    setItems(sortArr.sort((a, b) => a.address.city > b.address.city ? 1 : -1));     
-  }
-
-  if (error) {
-    return <div>Ошибка: {error.message}</div>;
-  } else if (!isLoaded) {
+const UsersList = (props) => {   
+  
+  if (props.error) {
+    return <div>Ошибка: {props.error.message}</div>;
+  } else if (!props.isLoaded) {
     return <div>Загрузка...</div>;
   } else {
     return (     
       <div className='right-block'>
           <p className='listTitle'>Список пользователей</p>         
-          {items.map(item => (
+          {props.items.map(item => (
           <div className='card' key={item.id}>
               <div className='card__info'>
                   <div>ФИО: <span className='card__data'>{item.name}</span></div>
@@ -49,7 +26,7 @@ const UsersList = () => {
               </div>                                      
           </div>
           ))}
-          <div className='quantityUsers'>Найдено {items.length} пользователей</div>                    
+          <div className='quantityUsers'>Найдено {props.items.length} пользователей</div>                    
       </div>     
     );  
   }    
